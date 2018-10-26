@@ -41,11 +41,6 @@ public class SecondaryConfigurer {
                 .build();
     }
 
-    @Bean(name = "entityManagerSecondary")
-    public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
-        return entityManagerFactorySecondary(builder).getObject().createEntityManager();
-    }
-
     @Bean(name = "transactionManagerSecondary")
     public PlatformTransactionManager transactionManagerSecondary(EntityManagerFactoryBuilder builder) {
         return new JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());
